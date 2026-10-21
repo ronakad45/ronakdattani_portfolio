@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ronak Dattani, data and full-stack developer in Dar es Salaam. Projects include AirVision (ML air-quality forecasting) and EarthGlow (cross-platform salon booking app).">
+<meta property="og:title" content="Ronak Dattani · Data & Full-Stack Developer">
+<meta property="og:description" content="Data and full-stack developer in Dar es Salaam. See AirVision, EarthGlow and more.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23102320'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='%233fc6a2' text-anchor='middle'%3ERD%3C/text%3E%3C/svg%3E">
+<style>
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+<title>Ronak Dattani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (max 1080px), hero with a "model readout" panel, AirVision as a featured case study with its real pipeline, then a project grid, skills, background, contact. */
+:root {
+  --bg: #f3f6f5;
+  --surface: #ffffff;
+  --ink: #102320;
+  --muted: #55665f;
+  --line: #d6dfdb;
+  --accent: #0b7a63;
+  --accent-soft: #dcefe8;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1614; --surface: #13211e; --ink: #e6efec; --muted: #9ab0a8;
+    --line: #24362f; --accent: #3fc6a2; --accent-soft: #173a31; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1614; --surface: #13211e; --ink: #e6efec; --muted: #9ab0a8;
+  --line: #24362f; --accent: #3fc6a2; --accent-soft: #173a31; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+.label {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* nav */
+header.top { padding-block: 22px; }
+header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.mark { font-family: var(--display); font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+.mark span { color: var(--accent); }
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { padding-block: 48px 72px; }
+.hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 48px; align-items: end; }
+.hero h1 { font-size: clamp(44px, 7.4vw, 88px); font-weight: 800; letter-spacing: -.035em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lede { font-size: 19px; color: var(--muted); max-width: 34ch; margin: 24px 0 0; }
+.hero .meta { display: flex; gap: 10px 22px; flex-wrap: wrap; margin-top: 28px; font-size: 14px; color: var(--muted); }
+.hero .meta b { color: var(--ink); font-weight: 600; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px;
+  border-radius: 999px; font: 600 15px var(--body); text-decoration: none;
+  border: 1.5px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer;
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:hover { transform: translateY(-1px); }
+
+.readout {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px; font-family: var(--mono); font-size: 13px; min-width: 0;
+}
+.readout .head { display: flex; justify-content: space-between; color: var(--muted); padding-bottom: 14px; border-bottom: 1px dashed var(--line); }
+.readout .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.readout dl { display: grid; grid-template-columns: 1fr auto; gap: 12px 16px; margin: 16px 0 0; }
+.readout dt { color: var(--muted); }
+.readout dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
+.readout .big { font-family: var(--display); font-size: 40px; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
+.cities { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 18px; }
+.cities span { padding: 3px 8px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-size: 11px; }
+
+/* sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 700; letter-spacing: -.025em; }
+
+/* featured */
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.feature > * { min-width: 0; }
+.feature h3 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+.feature .when { margin: 8px 0 18px; }
+.feature p { margin: 0 0 16px; max-width: 60ch; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 18px; }
+.tags span { font-family: var(--mono); font-size: 12px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
+.pipeline { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.pipeline li {
+  counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.pipeline li:first-child { padding-top: 0; }
+.pipeline li::before {
+  content: counter(step, decimal-leading-zero); font-family: var(--mono); font-size: 13px;
+  color: var(--accent); padding-top: 2px;
+}
+.pipeline strong { display: block; font-weight: 600; }
+.pipeline span { color: var(--muted); font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 40px; }
+.stats div { background: var(--surface); padding: 18px; }
+.stats b { display: block; font-family: var(--display); font-size: 30px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.stats small { color: var(--muted); font-size: 13px; }
+
+/* project grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card h3 { font-size: 21px; font-weight: 700; letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.card .tags { margin-top: auto; padding-top: 8px; }
+.kind { color: var(--accent); }
+.card.wide { grid-column: 1 / -1; }
+.points { margin: 4px 0 0; padding-left: 18px; font-size: 15px; display: grid; gap: 4px; }
+.links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.card .links { margin-top: 4px; }
+.btn.sm { padding: 7px 14px; font-size: 14px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 10px !important; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 28px; }
+.skills h3 { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.skills ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.skills li { padding: 5px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; }
+
+/* background */
+.timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.entry { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.entry:first-of-type { padding-top: 0; }
+.entry h3 { font-size: 20px; font-weight: 700; }
+.entry .org { color: var(--muted); margin: 2px 0 8px; font-size: 15px; }
+.entry ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.langs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.langs span { padding: 4px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-size: 14px; font-weight: 500; }
+
+/* contact */
+.contact { background: var(--ink); color: var(--bg); padding-block: 72px; }
+.contact h2 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; letter-spacing: -.03em; max-width: 16ch; }
+.contact p { color: color-mix(in srgb, var(--bg) 72%, var(--ink)); max-width: 52ch; margin: 18px 0 32px; font-size: 17px; }
+.rows { display: grid; gap: 0; max-width: 680px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid color-mix(in srgb, var(--bg) 20%, var(--ink)); flex-wrap: wrap; }
+.row .k { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: color-mix(in srgb, var(--bg) 60%, var(--ink)); width: 90px; }
+.row .v { flex: 1; min-width: 0; font-size: 17px; overflow-wrap: anywhere; user-select: all; }
+.row .v a { color: var(--bg); text-decoration-color: color-mix(in srgb, var(--bg) 40%, var(--ink)); }
+.copy { font: 500 13px var(--mono); padding: 6px 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--bg) 40%, var(--ink)); background: transparent; color: var(--bg); cursor: pointer; }
+footer { padding-block: 24px; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .feature, .timeline, .grid { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .grid, .skills { grid-template-columns: 1fr; }
+  nav { gap: 14px; }
+  .hero { padding-block: 24px 48px; }
+  section.block { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .readout .dot { animation: none; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">ronak<span>.</span>dattani</div>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="label">Data &amp; full-stack developer · Dar es Salaam</p>
+      <h1>I build data products that <em>actually ship.</em></h1>
+      <p class="lede">From raw API data to a trained model, a REST backend and a live web app that people can use.</p>
+      <div class="meta">
+        <div><b>BSc IT, First Class Honours</b> · Middlesex University Dubai</div>
+        <div><b>Open to work</b> · data, ML and software roles</div>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/ronakad45" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/ronak-dattani-27768b2a0" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <aside class="readout" aria-label="AirVision model summary">
+      <div class="head"><span><span class="dot"></span>airvision / model</span><span>deployed</span></div>
+      <dl>
+        <dt>best model</dt><dd>XGBoost</dd>
+        <dt>test RMSE</dt><dd class="big">12.95</dd>
+        <dt>daily readings</dt><dd>4,420</dd>
+        <dt>engineered features</dt><dd>22</dd>
+        <dt>UAT test cases</dt><dd>65</dd>
+      </dl>
+      <div class="cities"><span>Dubai</span><span>Abu Dhabi</span><span>Riyadh</span><span>Kuwait City</span><span>Doha</span></div>
+    </aside>
+  </div>
+</section>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Featured project</h2>
+      <span class="label">Final year project · Jan – Apr 2026</span>
+    </div>
+
+    <div class="feature">
+      <div>
+        <h3>AirVision</h3>
+        <p class="label when">Next-day air quality prediction for five Middle Eastern cities</p>
+        <p>A full-stack machine learning web app with a live dashboard, 5-day forecasts, city comparison, historical trend charts and a quiz-based leaderboard. It is mobile responsive and publicly accessible with no login.</p>
+        <p>I scoped the feature set around what end users needed, built every layer myself, and ran user acceptance testing before release.</p>
+        <div class="tags">
+          <span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>FastAPI</span><span>SQLite</span><span>Vue.js</span><span>Chart.js</span><span>OpenAQ API</span><span>OpenWeather API</span><span>Render</span>
+        </div>
+        <div class="links"><a class="btn sm primary" href="https://cst3990-airvision.onrender.com/" target="_blank" rel="noopener">Live demo ↗</a><a class="btn sm" href="https://github.com/ronakad45/CST3990-AirVision" target="_blank" rel="noopener">Code ↗</a></div>
+        <p class="note">Hosted on Render's free tier, so the first load can take up to a minute.</p>
+      </div>
+      <ol class="pipeline" aria-label="How AirVision was built">
+        <li><div><strong>Collect</strong><span>4,420 daily pollutant readings from the OpenAQ API</span></div></li>
+        <li><div><strong>Clean &amp; engineer</strong><span>Processed in Python with Pandas; 22 engineered features</span></div></li>
+        <li><div><strong>Train &amp; compare</strong><span>Linear Regression, Random Forest and XGBoost; best RMSE 12.95</span></div></li>
+        <li><div><strong>Serve</strong><span>Predictions exposed through a FastAPI REST API with SQLite</span></div></li>
+        <li><div><strong>Build the interface</strong><span>Vue.js frontend with Chart.js visualisations</span></div></li>
+        <li><div><strong>Deploy &amp; test</strong><span>Deployed on Render; 65 UAT cases across API, functional and usability testing</span></div></li>
+      </ol>
+    </div>
+
+    <div class="stats">
+      <div><b>5</b><small>cities forecast</small></div>
+      <div><b>3</b><small>models compared</small></div>
+      <div><b>22</b><small>engineered features</small></div>
+      <div><b>65</b><small>UAT test cases</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>More projects</h2>
+      <span class="label">2024 – 2026</span>
+    </div>
+    <div class="grid">
+      <article class="card wide">
+        <span class="label"><span class="kind">Cross-platform app</span> · Web, Android &amp; iOS · Jul 2026</span>
+        <h3>EarthGlow Salon Booking</h3>
+        <p>A booking app for a beauty salon in Dar es Salaam, built from one TypeScript codebase that runs on web, Android and iOS and adapts to phone and desktop screens. Customers browse services by category, meet the team and book appointments.</p>
+        <ul class="points">
+          <li>Email sign-up with confirmation, Google sign-in and password reset through Supabase Auth</li>
+          <li>Supabase PostgreSQL with versioned SQL migrations; React Query for server state, Zustand for UI state</li>
+          <li>Admin photo uploader for services and staff; web build deployed on Vercel</li>
+        </ul>
+        <div class="tags"><span>React Native</span><span>Expo Router</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Vercel</span></div>
+        <div class="links"><a class="btn sm primary" href="https://earthglow-app.vercel.app/" target="_blank" rel="noopener">Live app ↗</a><a class="btn sm" href="https://github.com/ronakad45/earthglow-app" target="_blank" rel="noopener">Code ↗</a></div>
+      </article>
+      <article class="card">
+        <span class="label"><span class="kind">Analytics</span> · MENA Hackathon · Dec 2025</span>
+        <h3>Starbucks Pulse Dubai</h3>
+        <p>A KPI dashboard built with a cross-functional team, analysing customer sentiment, revenue per item and RevPASH to find off-peak sales and customer experience opportunities.</p>
+        <div class="tags"><span>Python</span><span>JavaScript</span><span>HTML/CSS</span></div>
+      </article>
+      <article class="card">
+        <span class="label"><span class="kind">Full-stack</span> · Dec 2025</span>
+        <h3>Rain Prediction Weather App</h3>
+        <p>Next-day rain predictions for any location in the world, with rate limiting, security headers and environment-based config. Deployed on Render.</p>
+        <div class="tags"><span>Node.js</span><span>Express</span><span>EJS</span><span>OpenWeatherMap API</span></div>
+        <div class="links"><a class="btn sm primary" href="https://weather-rain-checker.onrender.com/" target="_blank" rel="noopener">Live app ↗</a><a class="btn sm" href="https://github.com/ronakad45/weather-rain-checker" target="_blank" rel="noopener">Code ↗</a></div>
+      </article>
+      <article class="card">
+        <span class="label"><span class="kind">Data viz</span> · Nov – Dec 2024</span>
+        <h3>Global SDG Analysis &amp; Forecasting</h3>
+        <p>Merged historical and current Sustainable Development Goal datasets, standardised metrics, and built interactive dashboards of global and regional progress over time.</p>
+        <div class="tags"><span>Tableau</span><span>Time-series</span><span>Data cleaning</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div class="skills">
+      <div><h3>Data &amp; ML</h3><ul><li>Python</li><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>XGBoost</li><li>Feature engineering</li><li>Statistical analysis</li></ul></div>
+      <div><h3>Analytics &amp; BI</h3><ul><li>SQL</li><li>Tableau</li><li>Excel</li><li>Matplotlib</li><li>KPI reporting</li><li>Data cleaning</li></ul></div>
+      <div><h3>Backend</h3><ul><li>FastAPI</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Postman</li></ul></div>
+      <div><h3>Frontend</h3><ul><li>React Native (Expo)</li><li>Vue.js</li><li>React</li><li>TypeScript</li><li>JavaScript</li><li>HTML &amp; CSS</li><li>Chart.js</li></ul></div>
+      <div><h3>Databases</h3><ul><li>Supabase</li><li>PostgreSQL</li><li>MySQL</li><li>SQLite</li><li>MongoDB Atlas</li></ul></div>
+      <div><h3>Delivery</h3><ul><li>Git &amp; GitHub</li><li>Render &amp; Vercel</li><li>Google OAuth</li><li>UAT</li><li>Feature scoping</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="background">
+  <div class="wrap">
+    <div class="sec-head"><h2>Background</h2></div>
+    <div class="timeline">
+      <div>
+        <p class="label">Experience</p>
+        <div class="entry">
+          <h3>Student Learning Assistant</h3>
+          <p class="org">Middlesex University Dubai · Jan – Apr 2025</p>
+          <ul>
+            <li>Guided students through SQL, Python and Tableau tasks in lab sessions</li>
+            <li>Organised datasets, reports and documentation for academic staff</li>
+            <li>Prepared analytical teaching materials</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p class="label">Education</p>
+        <div class="entry">
+          <h3>BSc Information Technology</h3>
+          <p class="org">Middlesex University Dubai · 2023 – 2026 · First Class Honours</p>
+        </div>
+        <div class="entry">
+          <h3>Cambridge International A Levels</h3>
+          <p class="org">2021 – 2023 · Physics, Chemistry, Mathematics (B, B, B)</p>
+        </div>
+        <p class="label" style="margin-top:22px">Languages</p>
+        <div class="langs"><span>English</span><span>Kiswahili</span><span>Hindi</span><span>Gujarati</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something useful.</h2>
+    <p>I'm looking for data, machine learning and software roles in Dar es Salaam, and I take on freelance web projects.</p>
+    <div class="rows">
+      <div class="row"><span class="k">Email</span><span class="v" id="email">ronakad17@gmail.com</span><button class="copy" type="button" data-copy="email">Copy</button></div>
+      <div class="row"><span class="k">Phone</span><span class="v" id="phone">+255 626 543 117</span><button class="copy" type="button" data-copy="phone">Copy</button></div>
+      <div class="row"><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/ronak-dattani-27768b2a0" target="_blank" rel="noopener">linkedin.com/in/ronak-dattani-27768b2a0</a></span></div>
+      <div class="row"><span class="k">GitHub</span><span class="v"><a href="https://github.com/ronakad45" target="_blank" rel="noopener">github.com/ronakad45</a></span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Ronak Dattani · Dar es Salaam, Tanzania</div></footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.textContent.trim();
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected';
+      setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+});
+</script>
+
+</body>
+</html>
